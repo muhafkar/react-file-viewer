@@ -31,6 +31,8 @@ function withFetching(WrappedComponent, props) {
 
     createRequest(path, authToken=null) {
       let xhr = new XMLHttpRequest();
+      if (authToken !== null)
+        xhr.setRequestHeader('access_token', authToken);
 
       if ('withCredentials' in xhr) {
         // XHR for Chrome/Firefox/Opera/Safari.
@@ -47,8 +49,6 @@ function withFetching(WrappedComponent, props) {
       if (props.responseType) {
         xhr.responseType = props.responseType;
       }
-      if (authToken !== null)
-        xhr.setRequestHeader('access_token', authToken);
 
       xhr.onload = () => {
         if (xhr.status >= 400) {
