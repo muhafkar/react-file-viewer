@@ -10,6 +10,7 @@ function withFetching(WrappedComponent, props) {
     constructor(props) { // eslint-disable-line no-shadow
       super(props);
       this.state = {};
+      console.log(props);
       this.xhr = this.createRequest(props.filePath, props.authToken);
     }
 
@@ -46,7 +47,7 @@ function withFetching(WrappedComponent, props) {
       if (props.responseType) {
         xhr.responseType = props.responseType;
       }
-      if(authToken !== null)
+      if (authToken !== null)
         xhr.setRequestHeader('access_token', authToken);
 
       xhr.onload = () => {
