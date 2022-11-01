@@ -10,7 +10,6 @@ function withFetching(WrappedComponent, props) {
     constructor(props) { // eslint-disable-line no-shadow
       super(props);
       this.state = {};
-      console.log(props);
       this.xhr = this.createRequest(props.filePath, props.authToken);
     }
 
@@ -29,10 +28,10 @@ function withFetching(WrappedComponent, props) {
       this.abort();
     }
 
-    createRequest(path, authToken=null) {
+    createRequest(path, authToken) {
       let xhr = new XMLHttpRequest();
-      if (authToken !== null)
-        xhr.setRequestHeader('access_token', authToken);
+      xhr.setRequestHeader('Authorization', 'test');
+      xhr.setRequestHeader('access_token', authToken);
 
       if ('withCredentials' in xhr) {
         // XHR for Chrome/Firefox/Opera/Safari.
