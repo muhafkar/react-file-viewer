@@ -1,7 +1,7 @@
 
 # react-file-viewer
 
-Extendable file viewer for web
+Extendable file viewer for web (Note: This is a forked version of react-native-preview that I created becuase it lacked support for custom header for the files)
 
 ## Supported file formats:
 
